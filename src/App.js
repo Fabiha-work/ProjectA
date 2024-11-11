@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
 import './App.css';
+import Navbar from './Components/Navbar';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Home from './Components/Home';
+import Tourism from './Components/Tourism';
+import Tech from './Components/Tech';
+import Movie from './Components/Movie';
+import Food from './Components/Food';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/home' element = {<Home />} />
+        <Route path='/tourism' element = {<Tourism />} />
+        <Route path='/tech' element = {<Tech />} />
+        <Route path='/movie' element = {<Movie />} />
+        <Route path='/food' element = {<Food />} />
+      </Routes>
+      </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
