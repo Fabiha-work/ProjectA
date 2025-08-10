@@ -1,30 +1,32 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Navbar from "./components/Navbar";
+import UserDashboard from "./pages/UserDashboard";
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import Navbar from './Components/Navbar';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Home from './Components/Home';
-import Tourism from './Components/Tourism';
-import Tech from './Components/Tech';
-import Movie from './Components/Movie';
-import Food from './Components/Food';
 
-
-const App = () => {
+function App() {
   return (
-    <div>
-      <BrowserRouter>
+    <Router>
       <Navbar />
       <Routes>
-        <Route path='/home' element = {<Home />} />
-        <Route path='/tourism' element = {<Tourism />} />
-        <Route path='/tech' element = {<Tech />} />
-        <Route path='/movie' element = {<Movie />} />
-        <Route path='/food' element = {<Food />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/dashboard"
+          element={
+            <UserDashboard
+              user={{ name: "Fabiha Parveen", email: "fabiha21@example.com", address: "xyz-city", }}
+            />
+          }
+        />
       </Routes>
-      </BrowserRouter>
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
